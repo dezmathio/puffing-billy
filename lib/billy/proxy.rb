@@ -28,7 +28,11 @@ module Billy
     end
 
     def host
-      'localhost'
+      if @proxy_host == 'localhost'
+        'localhost'
+      else
+        @proxy_host
+      end
     end
 
     def port

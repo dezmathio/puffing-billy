@@ -28,6 +28,7 @@ module Billy
       @non_whitelisted_requests_disabled = false
       @non_whitelisted_error_level = :error
       @cache_path = File.join(Dir.tmpdir, 'puffing-billy')
+      @proxy_host = 'localhost'
       @proxy_port = RANDOM_AVAILABLE_PORT
     end
   end
