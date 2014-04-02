@@ -64,9 +64,8 @@ module Billy
             close_connection
             raise "puffing-billy: #{response[:error]}"
           elsif response.has_key?(:warn)
-            close_connection_after_writing
-            Billy.log(:warn, "puffing-billy: closed connection for #{@url}")
-            #Billy.log(:warn, "puffing-billy: #{response[:warn]}")
+            close_connection
+            Billy.log(:warn, "puffing-billy: #{response[:warn]}")
           else
             send_response(response)
           end

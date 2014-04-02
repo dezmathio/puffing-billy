@@ -12,7 +12,7 @@ module Billy
 
     def handle_request(method, url, headers, body)
       if handles_request?(method, url, headers, body)
-        req = EventMachine::HttpRequest.new(url)
+        req = EventMachine::HttpRequest.new(url, :connect_timeout => 50, :inactivity_timeout => 100)
         req = req.send(method.downcase, build_request_options(headers, body))
 
         if req.error
@@ -38,7 +38,11 @@ module Billy
           return response
         end
       end
-      nil
+      return {
+          headers: {},
+          status: 404,
+          content: 'empty'
+      }
     end
 
     private
