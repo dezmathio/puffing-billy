@@ -46,7 +46,6 @@ module Billy
         driver.browser.set_proxy(:host => Billy.proxy.host,
                                  :port => Billy.proxy.port)
         driver.browser.ignore_ssl_errors
-        driver.enable_logging
         driver
       end
     end
